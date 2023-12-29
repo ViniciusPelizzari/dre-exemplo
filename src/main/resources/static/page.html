@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados</title>
+</head>
+<body>
+<h1>Resultados</h1>
+<p>preço</p><p id="totalPreco">preço</p>
+<p>receita</p><p id="totalReceita"></p>
+<p>custo</p><p id="totalCusto"></p>
+<p>lucro</p><p id="totalLucro"></p>
+<p>qtde</p><p id="totalQuantidade"></p>
+
+<script>
+    function fetchData(url, elementId) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById(elementId).innerText = data;
+            });
+    }
+
+    fetchData('http://localhost:8080/product/totalPreco', 'totalPreco');
+    fetchData('http://localhost:8080/dre/totalReceita', 'totalReceita');
+    fetchData('http://localhost:8080/dre/totalCusto', 'totalCusto');
+    fetchData('http://localhost:8080/dre/totalLucro', 'totalLucro');
+    fetchData('http://localhost:8080/sale/totalQuantidade', 'totalQuantidade');
+
+    setTimeout(function(){
+       location.reload();
+    }, 11111);
+        fetchData();
+</script>
+</body>
+</html>
